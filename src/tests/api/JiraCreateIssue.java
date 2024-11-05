@@ -5,9 +5,14 @@ import io.restassured.path.json.JsonPath;
 
 import static io.restassured.RestAssured.*;
 
+import org.testng.annotations.Test;
+
 public class JiraCreateIssue {
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+	@Test 
+	public void createIssue()
+	{
 		RestAssured.baseURI = "https://borealowl.atlassian.net/";
 
 		String createJiraIssueResponse = given().header("Content-Type", "application/json").header("Authorization",
@@ -23,4 +28,5 @@ public class JiraCreateIssue {
 		String issueId = js.getString("id");
 		System.out.println("ISSUE ID:" + issueId);
 	}
+//	}
 }

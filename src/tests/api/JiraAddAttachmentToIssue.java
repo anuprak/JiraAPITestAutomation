@@ -7,10 +7,12 @@ import static io.restassured.RestAssured.*;
 
 import java.io.File;
 
+import org.testng.annotations.Test;
+
 public class JiraAddAttachmentToIssue {
 
-	public static void main(String[] args) {
-
+	@Test
+	public void addValidAttachmentToIssue() {
 		RestAssured.baseURI = "https://borealowl.atlassian.net/";
 
 		String createJiraIssueResponse = given().header("Content-Type", "application/json").header("Authorization",
@@ -34,8 +36,6 @@ public class JiraAddAttachmentToIssue {
 				.statusCode(200).extract().asString();
 
 		js = new JsonPath(addAttachemntResponse);
-		System.out.println("ATTACHMENT ID:" + js.getString("id"));
-
+		// System.out.println("ATTACHMENT ID:" + js.getString("id"));
 	}
-
 }
